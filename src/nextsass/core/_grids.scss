@@ -1,0 +1,50 @@
+////
+/// core / grids
+/// @group core
+/// @author Ilton Alberto Junior
+////
+
+// Define the default breakpoints value
+$breakpoints: (
+  'mobile' : (
+    max-width: 768px
+  ),
+  'tablet' : (
+    max-width: 920px
+  ),
+  'notebook' : (
+    max-width: 1366px
+  )
+) !default;
+
+// Define columns, container and gutters value
+$grids: (
+  'columns': (
+    1:  8.33333333,
+    2:  16.66666667,
+    3:  25,
+    4:  33.33333333,
+    5:  41.66666667,
+    6:  50,
+    7:  58.33333333,
+    8:  66.66666667,
+    9:  75,
+    10: 83.33333333,
+    11: 91.66666667,
+    12: 100,
+  ),
+  'gutters': 15,
+  'container': 1170,
+) !default;
+
+// Create an array containing all grid columns size
+$grid-columns: map-get($grids, columns);
+
+// Create an array containing all possible grid sizes
+$grid-columns-keys: map-keys($grid-columns);
+
+// Return gutter size
+$grid-gutter: map-get($grids, gutters);
+
+// Return container size
+$grid-container: map-get($grids, container);

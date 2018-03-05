@@ -1,0 +1,39 @@
+////
+/// functions / strings
+/// @group strings
+/// @author Ilton Alberto Junior
+////
+
+/// Break a string into a list containing two items
+/// @param {string} $string - String to be broken
+/// @param {string} $separator - Separator to be used as a reference to break
+/// @example str-split('lorem-ipsum')
+/// @return {list} - (lorem ipsum)
+@function str-split($string, $separator) {
+  $split-arr: ();
+  $index : str-index($string, $separator);
+  @while $index != null {
+    $item: str-slice($string, 1, $index - 1);
+    $split-arr: append($split-arr, $item);
+    $string: str-slice($string, $index + 1);
+    $index : str-index($string, $separator);
+  }
+  $split-arr: append($split-arr, $string);
+
+  @return $split-arr;
+}
+
+/// Search and return a specific character inside a string
+/// @param {string} $value - Original string
+/// @param {string} $character - Character to be found
+/// @return {string} The character inside the string
+@function str-get-value($value, $character) {
+  $position: str-index($value, $character);
+  @if (type-of($position) != number) {
+    @return error
+  } @else {
+    $string: str-slice($value, $position);
+    $value: str-slice($string, 1, 1);
+  }
+  @return $value;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "nextsass",
+  "title": "nextSass",
+  "version": "0.1",
+  "private": true,
+  "description": "Elegant Sass utility library, fully customizable.",
+  "keywords": [
+    "Sass",
+    "CSS",
+    "CMS",
+    "Next",
+    "nextSass"
+  ],
+  "main": "src/nextsass.scss",
+  "author": "Ilton Alberto Junior",
+  "license": "MPL-2.0",
+  "homepage": "http://ilton.me/nextsass",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iltonjr/next3.git"
+  }
+}

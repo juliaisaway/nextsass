@@ -1,0 +1,22 @@
+////
+/// core / colors
+/// @group core
+/// @author Ilton Alberto Junior
+////
+
+// Basic colors for all nextsass project
+$nextsass-color: (
+  'basic': (
+    'white': #fff,
+    'black': #000,
+    'gray': #666,
+    'darkgray': #333,
+  ),
+  'alert': (
+    'error': #E31C3D,
+    'warn': #FDB81E,
+    'success': #2E8540,
+    'info': #02BFE7
+  )
+) !default;
+

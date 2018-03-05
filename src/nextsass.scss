@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+////
+/// nextSass 0.1
+/// http://ilton.me/nextsass
+/// Copyright 2018 Ilton Alberto Junior.
+/// MPL-2.0 License
+////
+
+@import 'compass';
+
+@import 'nextsass/variables';
+
+@import 'nextsass/core/colors';
+@import 'nextsass/core/grids';
+
+@import 'nextsass/functions/strings';
+@import 'nextsass/functions/colors';
+@import 'nextsass/functions/units';
+@import 'nextsass/functions/paths';
+@import 'nextsass/functions/utilities';

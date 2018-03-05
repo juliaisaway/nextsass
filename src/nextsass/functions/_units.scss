@@ -1,0 +1,36 @@
+////
+/// functions / units
+/// @group units
+/// @author Ilton Alberto Junior
+////
+
+/// Verify if the value given is a `number` type and if it is, convert to a
+/// specific value from an specific unit
+/// @param {number} $value - Value to be varified.
+/// @param {string} $unit [px] - Unit to be converted.
+/// @return {number|string} - Value converted.
+/// @example is-number-unit(20, rem);
+@function is-number-unit($value, $unit: px){
+  $result: null;
+  @if (type-of($value) == "number") {
+    $result: if(unitless($value), $value * 1+$unit, $value);
+  } @else {
+    $result: $value;
+  }
+  @return $result;
+}
+
+/// Convert values from PX to REM
+/// @param {Number} $pixels - Value in pixels.
+/// @param {Number} $context - Default REM size.
+/// @return {number} - Value converted in REM.
+/// @example font-size: rem(20);
+@function rem($pixels, $context: $rem-base) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}

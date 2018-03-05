@@ -1,0 +1,41 @@
+////
+/// functions / colors
+/// @group colors
+/// @author Ilton Alberto Junior
+////
+
+/// Return a color contained inside a color map
+/// @name color-picker
+/// @param {string} $name - Color name
+/// @return {string} - The color in hexadecimal value
+@function c($name) {
+  $value: '';
+  $array: $nextsass-color;
+
+  @if (type-of($name) == color) {
+    $value: $name
+  } @else if(type-of($name) != string) {
+    @error 'Error: Invalid value. Expected `string` but got `#{type-of($name)}`.';
+  } @else {
+
+    @if(type-of(str-index($name, str-get-value($name, '-'))) != number){
+      @error 'Error: Invalid name. Check your spelling again.'
+    }
+
+    $type: quote(nth(str-split($name, '-'), 1));
+    $tone: quote(nth(str-split($name, '-'), 2));
+
+    @if (map-get($array, $type) == null){
+      @error 'Error: No color base found with that name.';
+    }
+
+    @if(map-has-key(map-get($array, $type), $tone)) {
+      $value: map-get(map-get($array, $type), $tone);
+    } @else {
+      @error 'Error: No colors found with that name.';
+    }
+
+  }
+
+  @return $value;
+}

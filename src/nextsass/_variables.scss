@@ -1,0 +1,26 @@
+////
+/// variables
+/// @group core
+/// @author Ilton Alberto Junior
+////
+
+// Initial configuration
+$grid-active: true;
+
+// Assets path
+$asset-base-path: '../assets' !default;
+
+// Default font size inside <body>
+$rem-base: 14px;
+
+// Main project font
+$main-font: 'Open Sans', sans-serif;
+
+// Font-face list
+$font-faces: (
+  'Intro': (
+    'Intro-Black' 900 normal,
+    'Intro-Light' 300 normal,
+    'Intro-Thin-Italic' 200 normal,
+  ),
+);

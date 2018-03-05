@@ -1,0 +1,27 @@
+////
+/// functions / utilities
+/// @group utilities
+/// @author Ilton Alberto Junior
+////
+
+/// Verify if the quantity of arguments is greater or equal than a predetermined value.
+/// If not, return null.
+/// @param {string} $list - List containing all arguments.
+/// @param {number} $index - Value from comparison.
+/// @return {mixed|null} - Specific item inside a list or null
+/// @author jakob-e
+/// @link http://codepen.io/jakob-e/pen/WvrJwN
+@function nth-or-null($list, $index) {
+  @return if(length($list) >= $index, nth($list, $index), null);
+}
+
+/// Calculate the proportion (ratio) between two values
+/// @param {list} $arglist - Values to be calculated.
+/// @return {number} - Proportion value in decimal.
+@function ratio($arglist) {
+  $map: keywords($arglist);
+  $height: map-get($map, height) or nth-or-null($arglist, 2);
+  $width: map-get($map, width) or nth-or-null($arglist, 1);
+  $ratio: map-get($map, ratio) or if($width and $height, $width / $height, nth-or-null($arglist, 1)) or 1;
+  @return 1 / $ratio * 100%;
+}
