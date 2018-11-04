@@ -1,7 +1,21 @@
 {
-"version": 3,
-"mappings": "",
-"sources": [],
-"names": [],
-"file": "nextsass.css"
+	"version": 3,
+	"file": "nextsass.css",
+	"sources": [
+		"../src/nextsass.scss",
+		"../src/nextsass/_variables.scss",
+		"../src/nextsass/core/_colors.scss",
+		"../src/nextsass/core/_grids.scss",
+		"../src/nextsass/functions/_strings.scss",
+		"../src/nextsass/functions/_colors.scss",
+		"../src/nextsass/functions/_units.scss",
+		"../src/nextsass/functions/_paths.scss",
+		"../src/nextsass/functions/_utilities.scss",
+		"../src/nextsass/mixins/_utilities.scss",
+		"../src/nextsass/mixins/_responsive.scss",
+		"../src/nextsass/mixins/_alignment.scss",
+		"../src/nextsass/mixins/_styling.scss"
+	],
+	"names": [],
+	"mappings": ""
 }

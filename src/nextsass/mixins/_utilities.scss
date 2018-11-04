@@ -1,0 +1,44 @@
+////
+/// mixins / responsive
+/// @group utilities
+/// @author Ilton Alberto Junior
+////
+
+/// Mixin para inserção facilitada de fontes
+/// @param {string} $family - Nome da fonte
+/// @param {number | string} $size - Tamanho da fonte a ser inserida
+/// @param {number} $weight - Peso da fonte
+/// @example @include font(Intro, 14, 900);
+@mixin font($family, $size, $weight: 400) {
+  font: {
+    family: quote($family), $main-font;
+    size: is-number-unit($size);
+    weight: $weight;
+  }
+}
+
+/// Mixin de inclusão facilitada de fontes customizadas via Font-Face.
+/// @link https://gist.github.com/Ghosh/84d4842d520b72e026fb
+/// @param {string} $font-family Nome da família de fontes.
+/// @param {string} $font-file Nome do arquivo da fonte localizado na pasta /fonts/.
+/// @param {number} $font-weight Peso da fonte (aceita valores numéricos e valores padrão (normal, bold, lighter).
+/// @param {string} $font-weight Estilo da fonte (normal, italic).
+@mixin font-face($font-family, $font-file, $font-weight, $font-style) {
+  @font-face {
+    font-family: $font-family;
+    src: font($font-file + '.eot');
+    src: font($font-file + '.eot?#iefix') format('embedded-opentype'),
+    font($font-file + '.woff') format('woff'),
+    font($font-file + '.ttf') format('truetype'),
+    font($font-file + '.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+/// Mixin de inclusão facilitada de transições CSS.
+/// @param {string} $args... Argumentos de transição CSS.
+/// @example @include transition(.3s ease-in);
+@mixin transition($args...) {
+  transition: $args;
+}

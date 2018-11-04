@@ -7,8 +7,6 @@
 /// MPL-2.0 License
 ////
 
-@import 'compass';
-
 @import 'nextsass/variables';
 
 @import 'nextsass/core/colors';
@@ -19,3 +17,8 @@
 @import 'nextsass/functions/units';
 @import 'nextsass/functions/paths';
 @import 'nextsass/functions/utilities';
+
+@import 'nextsass/mixins/utilities';
+@import 'nextsass/mixins/responsive';
+@import 'nextsass/mixins/alignment';
+@import 'nextsass/mixins/styling';
