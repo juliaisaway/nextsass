@@ -1,0 +1,69 @@
+////
+/// mixins / alignments
+/// @access public
+/// @group alignments
+/// @author Ilton Alberto Junior
+////
+
+/// Easy Flexbox insertion
+/// @param {string} $display [flex] - Valor do atributo `display` do elemento (flex ou inline-flex).
+/// @param {string} $valign [null] - Valor do atributo `align-itens` para alinhamento vertical.
+/// @param {string} $halign [null] - Valor do atributo `justify-content` para alinhamento horizontal.
+/// @param {string} $wrap [wrap] - Valor do atributo `flex-wrap` para definir se o elemento irá dar wrap.
+/// @example @include flexbox(ambos);
+@mixin flexbox($display: flex, $valign: null, $halign: null, $wrap: wrap) {
+  display: $display;
+  align-items: $valign;
+  justify-content: $halign;
+  flex-wrap: $wrap;
+}
+
+/// Mixin para inserção de posicionamento e z-index.
+/// Cada variável é opcional e não precisa ser preenchida necessariamente;
+/// @param {string} $position [absolute] - Atributo position de CSS
+/// @param {string} $all [null] - Valor de posicionamento para todas as direções
+/// @param {number} $top [null] - Valor do posicionamento do topo
+/// @param {number} $right [null] - Valor do posicionamento da direita
+/// @param {number} $bottom [null] - Valor do posicionamento da base
+/// @param {number} $left [null] - Valor do posicionamento da esquerda
+/// @param {number} $zindex [null] - Valor de Z-Index do elemento
+/// @example @include position($top: 30, $left: 30, $zindex: 9999);
+@mixin position($position: absolute, $all: null, $top: null, $right: null, $bottom: null, $left: null, $zindex: null) {
+  position: $position;
+  top: if($all, $all, is-number-unit($top));
+  right: if($all, $all, is-number-unit($right));
+  bottom: if($all, $all, is-number-unit($bottom));
+  left: if($all, $all, is-number-unit($left));
+  z-index: $zindex;
+}
+
+/// Mixin para manter uma div sempre proporcional aos seus parâmetros.
+/// @link http://codepen.io/jakob-e/pen/WvrJwN
+/// @param {number | list} $arglist... - Valores da proporção.
+/// @example @include proportion(4, 3);
+/// @author jakob-e, modificado por Ilton Alberto Junior
+@mixin proportion($arglist...) {
+  &::before {
+    content: '';
+    float: left;
+    padding-bottom: ratio($arglist);
+    margin-right: -100%;
+  }
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/// Mixin para aplicação facilitada de tamanho nos elementos
+/// Utilizado para inserção altomática das propriedades width e height.
+/// Ambas as propriedades aceitam serem usadas com ou sem unidades de medida, incluindo valores como auto ou inherit;
+/// @param {number | string} $width - Largura do elemento.
+/// @param {number | string | null} $height [null] - Altura do elemento. Caso não seja definido um parâmetro, ele utilizará o mesmo valor da largura.
+/// @example @include size(728,60);
+/// @example @include size(100%,auto);
+@mixin size($width, $height: null) {
+  width: is-number-unit($width);
+  height: if($height, is-number-unit($height), is-number-unit($width));
+}

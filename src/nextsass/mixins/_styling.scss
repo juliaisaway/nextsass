@@ -1,0 +1,108 @@
+////
+/// mixins / styling
+/// @access public
+/// @group styling
+/// @author Ilton Alberto Junior
+////
+
+
+/// Mixin para aplicação facilitada de centralização por flexbox
+/// @param {string} $display [flex] - Valor do atributo `display` do elemento (flex ou inline-flex).
+/// @param {string} $valign [null] - Valor do atributo `align-itens` para alinhamento vertical.
+/// @param {string} $halign [null] - Valor do atributo `justify-content` para alinhamento horizontal.
+/// @param {string} $wrap [wrap] - Valor do atributo `flex-wrap` para definir se o elemento irá dar wrap.
+/// @example @include flexbox(ambos);
+@mixin background($color: null, $size: null, $position: null, $image: null, $repeat: null, $fixed: null) {
+  background: {
+    color: $color;
+    size: $size;
+    position: $position;
+    image: if($image, image($image), $image);
+    repeat: $repeat;
+    attachment: if($fixed == true, fixed, scroll);
+  }
+}
+
+/// Mixin para inverter conteúdos.
+/// Ao incluí-lo, espelha horizontalmente qualquer elemento.
+/// @example @include flipimage;
+@mixin flipimage {
+  $ms: '-ms';
+  transform: scaleX(-1);
+  #{$ms}-filter: 'FlipH';
+}
+
+/// Mixin para coversão em escala de cinza.
+/// Ao incluí-lo, converte o elemento, voltando as suas cores originais no hover.
+/// @param {bool} $hover [true] - Habilita a exibição da cor original no hover.
+/// @example @include grayscale;
+@mixin grayscale($hover: true) {
+  -webkit-filter: grayscale(100%);
+  transition: all 0.3s ease 0.1s;
+  -webkit-backface-visibility: hidden;
+  @if ($hover == true) {
+    &:hover {
+      filter: none;
+      -webkit-filter: grayscale(0%);
+    }
+  }
+}
+
+/// Mixin de edição do texto de Placeholder dos formulários.
+/// @param {Number} $font Tamanho em Pixels do texto de placeholder.
+/// @param {string} $color Cor do texto de placeholder.
+/// @example @include placeholder(13, $black);
+@mixin placeholder($font, $color) {
+  $prefixes: '::-webkit-input', '::-moz', ':-moz', ':-ms-input';
+  @each $vendor in $prefixes {
+    #{$vendor}-placeholder {
+      font-size: rem($font);
+      color: $color;
+    }
+  }
+}
+
+/// Mixin para customizar a barra de rolagem do navegador
+/// Compatível apenas com webkit/blink
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($primary, white, 75%)] - Scrollbar's color
+/// @author Hugo Giraudel
+/// @example @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    &:hover {
+      background: darken($foreground-color, 10);
+    }
+  }
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+/// Mixin de estilização da seleção de texto do website.
+/// @param {string} $bg Cor de background da caixa de seleção.
+/// @param {string} $color Cor do texto selecionado.
+/// @example @include selection($black, $white);
+@mixin selection($bg, $color) {
+  $prefix: '-moz, -o, -webkit, -ms';
+  @each $vendors in $prefix {
+    #{"::" + $vendors}-selection {
+      background: $bg;
+      color: $color;
+    }
+  }
+  ::selection {
+    background: $bg;
+    color: $color;
+  }
+}

@@ -1,0 +1,42 @@
+////
+/// mixins / responsive
+/// @access public
+/// @group responsive
+/// @author Ilton Alberto Junior
+////
+
+/// Mixin para inserção facilitada de breakpoints mobile
+/// @param {string} $value - Resolução do breakpoint para inserção do @media.
+/// @content Conteúdo de personalização do breakpoint.
+/// @example @include breakpoint(tablet);
+/// @author Hugo Giraudel, modificado por Ilton Alberto Junior
+@mixin breakpoint($value: mobile) {
+  @if map-has-key($breakpoints, $value) {
+    @media screen and #{inspect(map-get($breakpoints, $value))} {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a breakpoint named `#{$value}`.";
+  }
+}
+
+/// Mixin para transformar qualquer vídeo em responsivo.
+/// Ao inserí-lo, permite que qualquer vídeo se torne responsivo relativo a sua div pai.
+/// @param {number | list} $ratio - Valores da proporção.
+/// @example @include responsive-video;
+@mixin responsive-video($ratio...) {
+  position: relative;
+  padding-bottom: ratio($ratio);
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include size(100%);
+  }
+}

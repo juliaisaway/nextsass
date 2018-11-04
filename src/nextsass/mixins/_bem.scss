@@ -1,0 +1,24 @@
+////
+/// mixins / bem
+/// @access public
+/// @group bem
+/// @author Ilton Alberto Junior
+////
+
+/// Block Element for BEM syntax
+/// @param {string} $element - Element's name
+/// @example @include element('lorem');
+@mixin e($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/// Block Modifier for BEM syntax
+/// @param {string} $modifier - Modifier's name
+/// @example @include m('ipsum');
+@mixin m($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
