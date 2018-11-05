@@ -2,8 +2,12 @@
 
 nextSass is a complete Sass library, aimed in customization, lightweight and code agility.
 
-* nextSass is build entirery on Sass, being dependency-free.
+* nextSass is built entirery on Sass, being dependency-free.
 * nextSass is human-readable, making easy to understand
+
+## Build
+
+Run `npm run dev` to start the project. This will automatically start compiling your .scss files on the go.
 
 ## Authors
 

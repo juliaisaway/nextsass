@@ -18,15 +18,14 @@
   flex-wrap: $wrap;
 }
 
-/// Mixin para inserção de posicionamento e z-index.
-/// Cada variável é opcional e não precisa ser preenchida necessariamente;
-/// @param {string} $position [absolute] - Atributo position de CSS
-/// @param {string} $all [null] - Valor de posicionamento para todas as direções
-/// @param {number} $top [null] - Valor do posicionamento do topo
-/// @param {number} $right [null] - Valor do posicionamento da direita
-/// @param {number} $bottom [null] - Valor do posicionamento da base
-/// @param {number} $left [null] - Valor do posicionamento da esquerda
-/// @param {number} $zindex [null] - Valor de Z-Index do elemento
+/// Define the element's position attribute and it's values
+/// @param {string} $position [absolute] - Position status
+/// @param {string} $all [null] - Attribute value for all positions at the same time
+/// @param {number} $top [null] - Top attribute when position is absolute
+/// @param {number} $right [null] - Right attribute when position is absolute
+/// @param {number} $bottom [null] - Bottom attribute when position is absolute
+/// @param {number} $left [null] - Left attribute when position is absolute
+/// @param {number} $zindex [null] - Z-Index attribute
 /// @example @include position($top: 30, $left: 30, $zindex: 9999);
 @mixin position($position: absolute, $all: null, $top: null, $right: null, $bottom: null, $left: null, $zindex: null) {
   position: $position;

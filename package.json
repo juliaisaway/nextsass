@@ -8,7 +8,7 @@
     "build-task:autoprefixer": "postcss bin/*.css --use autoprefixer -d bin",
     "sass:build": "npm-run-all -p build-task:*",
     "sass:watch": "chokidar 'src/**/*.scss' -c 'npm run sass:build'",
-    "dev": "npm-run-all -p sass:*"
+    "dev": "npm-run-all -p sass:* & sassdoc src -d public"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "chokidar-cli": "^1.2.1",
     "node-sass-chokidar": "^1.3.4",
     "npm-run-all": "^4.1.3",
-    "postcss-cli": "^6.0.1"
+    "postcss-cli": "^6.0.1",
+    "sassdoc": "^2.5.1"
   }
 }
