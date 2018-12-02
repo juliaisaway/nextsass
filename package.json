@@ -1,6 +1,6 @@
 {
   "name": "nextsass",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "nextSass is a complete Sass library, aimed in customization, lightweight and code agility.",
   "main": "index.js",
   "scripts": {

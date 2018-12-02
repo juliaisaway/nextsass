@@ -6,8 +6,9 @@
 ////
 
 /// Block Element for BEM syntax
+/// @name block-element
 /// @param {string} $element - Element's name
-/// @example @include element('lorem');
+/// @example @include e('lorem');
 @mixin e($element) {
   &__#{$element} {
     @content;
@@ -15,6 +16,7 @@
 }
 
 /// Block Modifier for BEM syntax
+/// @name block-modifier
 /// @param {string} $modifier - Modifier's name
 /// @example @include m('ipsum');
 @mixin m($modifier) {
