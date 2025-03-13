@@ -11,7 +11,7 @@ Run `npm run dev` to start the project. This will automatically start compiling 
 
 ## Authors
 
-* [**Ilton Alberto Junior**](http://ilton.me) - *Initial work*
+* [**Júlia Alberto**](http://eusoujulia.com.br) - *Initial work*
 
 ## License
 
